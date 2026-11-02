@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GameFlix</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 class="headerStyle">Gameflix</h1>
+<main>
+    <div th:if="${username != null}">
+        <p>Signed in as <strong th:text="${username}"></strong></p>
+        <p><a th:href="@{/users}">List Users</a></p>
+        <form th:action="@{/logout}" method="post"><button type="submit">Log out</button></form>
+    </div>
+    <div th:if="${username == null}">
+        <p><a th:href="@{/login}">Log in</a> &middot; <a th:href="@{/register}">Register</a></p>
+    </div>
+</main>
+</body>
+</html>

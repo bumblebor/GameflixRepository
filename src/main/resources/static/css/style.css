@@ -1,0 +1,8 @@
+body { font-family: system-ui, sans-serif; margin: 0; }
+.headerStyle { background-color: orange; color: blue; font-size: 60px; padding: 20px; text-align: center; margin: 0; }
+main { max-width: 480px; margin: 24px auto; padding: 0 16px; }
+form input { display: block; width: 100%; box-sizing: border-box; margin-bottom: 10px; padding: 8px; }
+.error { color: #b00020; }
+.ok { color: #0a7a2f; }
+table { border-collapse: collapse; }
+td, th { border: 1px solid #ccc; padding: 6px 12px; }

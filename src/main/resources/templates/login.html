@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GameFlix</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 class="headerStyle">Gameflix</h1>
+<main>
+    <h2>Login</h2>
+    <p class="error" th:if="${param.error}">Invalid e-mail or password.</p>
+    <p class="ok" th:if="${param.logout}">You have been logged out.</p>
+    <p class="ok" th:if="${param.registered}">Account created. Please log in.</p>
+    <form th:action="@{/login}" method="post">
+        <input type="email" name="email" placeholder="E-mail" required>
+        <input type="password" name="password" placeholder="Password" required>
+        <button type="submit">Log in</button>
+    </form>
+    <p th:if="${oauthEnabled}"><a th:href="@{/oauth2/authorization/github}">Log in with GitHub</a></p>
+    <p>No account? <a th:href="@{/register}">Register</a></p>
+</main>
+</body>
+</html>

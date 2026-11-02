@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GameFlix</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 class="headerStyle">Gameflix</h1>
+<main>
+    <h2>Registration</h2>
+    <p class="error" th:if="${error}" th:text="${error}"></p>
+    <form th:action="@{/register}" th:object="${form}" method="post">
+        <input type="text" th:field="*{username}" placeholder="Username" required>
+        <input type="email" th:field="*{email}" placeholder="E-mail" required>
+        <input type="password" name="password" placeholder="Password (min 8 characters)" required>
+        <button type="submit">Register</button>
+    </form>
+    <p>Already registered? <a th:href="@{/login}">Log in</a></p>
+</main>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>GameFlix</title>
+    <link rel="stylesheet" th:href="@{/css/style.css}">
+</head>
+<body>
+<h1 class="headerStyle">Gameflix</h1>
+<main>
+    <h2>User Info</h2>
+    <table>
+        <tr><th>Username</th><th>E-mail</th></tr>
+        <tr th:each="u : ${api/users/me}">
+            <td th:text="${u.username}"></td>
+            <td th:text="${u.email}"></td>
+        </tr>
+    </table>
+    <p><a th:href="@{/}">Home</a></p>
+</main>
+</body>
+</html>
