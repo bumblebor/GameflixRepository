@@ -54,9 +54,9 @@ jobs:
       - name: Install Syft
         uses: anchore/sbom-action/download-syft@v0
       - name: Generate SBOM
-        run: syft gameflix-app:c20df8b -o cyclonedx-json=sbom.cdx.json
+        run: syft gameflix-app -o cyclonedx-json=sbom.cdx.json
       - name: Scan and gate
-        run: trivy image --severity HIGH,CRITICAL --exit-code 1 gameflix-app:c20df8b
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 gameflix-app
       - name: Archive SBOM as build evidence
         uses: actions/upload-artifact@v4
         with:
