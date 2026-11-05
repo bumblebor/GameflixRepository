@@ -52,12 +52,12 @@ jobs:
 
         run: docker build -t gameflix-backend .
 
-      - name: Install syft
-        run: curl -sSfL https://get.anchore.io/syft | sudo sh -s -- -b /usr/local/bin
-      - name: Install trivy
-        run: curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sudo sh -s -- -b /usr/local/bin
       - name: Generate SBOM
         run: syft gameflix-backend:c20df8b -o cyclonedx-json=sbom.cdx.json
-
       - name: Scan and gate
         run: trivy image --severity HIGH,CRITICAL --exit-code 1 gameflix-backend:c20df8b
+      - name: Archive SBOM as build evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: sbom
+          path: sbom.cdx.json
