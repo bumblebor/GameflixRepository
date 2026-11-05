@@ -53,7 +53,7 @@ jobs:
         run: docker build -t gameflix-backend .
 
       - name: Generate SBOM
-        run: syft gameflix-app:c20df8b -o cyclonedx-json=sbom.cdx.json
+        run: syft gameflix-backend:c20df8b -o cyclonedx-json=sbom.cdx.json
 
       - name: Scan and gate
-        run: trivy image --severity HIGH,CRITICAL --exit-code 1 gameflix-app:c20df8b
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 gameflix-backend:c20df8b
