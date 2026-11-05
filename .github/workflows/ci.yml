@@ -51,7 +51,8 @@ jobs:
       - name: Build Docker image
 
         run: docker build -t gameflix-backend .
-
+      - name: Install Syft
+        uses: anchore/sbom-action/download-syft@v0
       - name: Generate SBOM
         run: syft gameflix-backend:c20df8b -o cyclonedx-json=sbom.cdx.json
       - name: Scan and gate
