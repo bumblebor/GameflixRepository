@@ -53,10 +53,10 @@ jobs:
         run: docker build -t gameflix-backend .
 
       - name: Generate SBOM
-        run: syft gameflix/streaming-svc:GITSHA -o cyclonedx-json=sbom.cdx.json
+        run: syft gameflix-app:GITSHA -o cyclonedx-json=sbom.cdx.json
 
       - name: Scan and gate
-        run: trivy image --severity HIGH,CRITICAL --exit-code 1 gameflix/streaming-svc:GITSHA
+        run: trivy image --severity HIGH,CRITICAL --exit-code 1 gameflix-app:GITSHA
 
       - name: Archive SBOM as build evidence
         uses: actions/upload-artifact@v4
